@@ -10,9 +10,9 @@ class App extends Component {
     bad: 0,
   };
 
-  onBtnCLick = name => () => {
-    this.setState(prev => ({
-      [name]: prev[name] + 1,
+  onBtnCLick = name => {
+    this.setState(prevState => ({
+      [name]: prevState[name] + 1,
     }));
   };
 
@@ -26,9 +26,8 @@ class App extends Component {
       <>
         <Section title={'Please leave feedback'}>
           <Feedback
-            onGood={this.onBtnCLick('good')}
-            onNeutral={this.onBtnCLick('neutral')}
-            onBad={this.onBtnCLick('bad')}
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.onBtnCLick}
           />
         </Section>
         <Section title={'Statistics'}>
